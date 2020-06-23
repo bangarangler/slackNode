@@ -8,6 +8,7 @@ const mongoose = require("mongoose");
 
 // const placesRoutes = require("./routes/places-routes");
 const usersRoutes = require("./routes/users-routes");
+const pluarisRoutes = require("./routes/pluaris-routes");
 
 const app = express();
 
@@ -24,6 +25,7 @@ app.use((req, res, next) => {
 });
 
 app.use("/api/users", usersRoutes);
+app.use("/api/pluaris", pluarisRoutes);
 
 app.use((req, res, next) => {
   const error = new HttpError("Could not find this route.", 404);
