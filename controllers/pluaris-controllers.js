@@ -5,13 +5,14 @@ const sayHi = async (req, res, next) => {
   // let users;
   try {
     // users = await User.find({}, "-password");
-    next();
+    // next();
+    console.log("try block");
   } catch (err) {
     const error = new HttpError("Can not get users", 500);
     return next(error);
   }
 
-  res.json({ message: "Hello Slack", status: 200 });
+  return res.json({ message: "Hello Slack", status: 200 });
 };
 
 // const signup = async (req, res, next) => { const errors = false;
