@@ -1,9 +1,27 @@
 const HttpError = require("../models/http-error");
 const User = require("../models/users");
 
+const SlackBot = require("slackbots");
+
 const sayHi = async (req, res, next) => {
   // let users;
   try {
+    const bot = new SlackBot({
+      token: `${process.env.BOT_TOKEN}`,
+      name: "pluaris_bot",
+    });
+
+    bot.on("start", () => {
+      const params = {
+        icon_emoji: ":robot_face:",
+      };
+
+      bot.postMessageToChannel(
+        "random",
+        "Get inspired while working with @inspirenuggets",
+        params
+      );
+    });
     // users = await User.find({}, "-password");
     // next();
     console.log("try block");
